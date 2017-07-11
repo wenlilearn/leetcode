@@ -9,21 +9,22 @@ module Main
   # @param {String} needle
   # @return {Integer}
   def str_str(haystack, needle)
-    if !(haystack.empty? ^ needle.empty?)
+    if haystack.empty? && !(needle.empty?)
       return -1
-    elsif(haystack.empty? && needle.empty?)
+    elsif !(haystack.empty?) && needle.empty?
+      return 0
+    elsif haystack.empty? && needle.empty?
       return 0
     end
 
     haystack_len = haystack.length
     needle_len = needle.length
 
-    for i in 0..haystack_len
-      if (haystack_len[i] == needle_len[0])
-        for j in 0..needle_len
-          break unless haystack_len[i + j] == needle_len[j]
-          return i if j == needle_len - 1
-        end
+    return -1 if needle_len > haystack_len
+
+    for i in 0...haystack_len
+      if(haystack[i] == needle[0]) && i + needle_len <= haystack_len
+        return i if haystack[i...(i+needle_len)] == needle
       end
     end
 
