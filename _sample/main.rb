@@ -1,4 +1,7 @@
+=begin
+
+=end
+
 module Main
-  def sample()
-  end
+  
 end
