@@ -10,5 +10,6 @@ class MainTest < Test::Unit::TestCase
 
     assert_equal(false, is_symmetric(TreeNode.new(1, TreeNode.new(2), TreeNode.new(3))))
     assert_equal(true, is_symmetric(TreeNode.new(1, TreeNode.new(2), TreeNode.new(2))))
+    assert_equal(false, is_symmetric(TreeNode.new(1, TreeNode.new(2, nil, TreeNode.new(3)), TreeNode.new(2, nil, TreeNode.new(3)))))
   end
 end
