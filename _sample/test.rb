@@ -5,6 +5,6 @@ include Main
 
 class MainTest < Test::Unit::TestCase
   def test_simple()
-    assert(true)
+    assert_equal(true, true)
   end
 end

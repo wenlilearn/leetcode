@@ -7,9 +7,40 @@ Note: Given n will be a positive integer.
 =end
 
 module Main
+  # # @param {Integer} n
+  # # @return {Integer}
+  # def climb_stairs(n)
+  #   if n == 0
+  #     return 1
+  #   elsif n == 1
+  #     return 1
+  #   elsif n == 2
+  #     return 2
+  #   end
+  #
+  #   mem = {0 => 1, 1 => 1, 2 => 2}
+  #
+  #   do_climb_stairs(n, 0, mem)
+  # end
+  #
+  # def do_climb_stairs(n, total, mem)
+  #   if n < 0
+  #     return 0
+  #   elsif n == 0
+  #     return 1
+  #   end
+  #
+  #   if(mem.key?(n))
+  #     return mem[n]
+  #   else
+  #     total = do_climb_stairs(n - 1, total, mem) + do_climb_stairs(n - 2, total, mem)
+  #     mem[n] = total
+  #   end
+  # end
+
   # @param {Integer} n
-  # @return {Integer}
-  def climb_stairs(n)
+# @return {Integer}
+def climb_stairs(n)
     if n == 0
       return 1
     elsif n == 1
@@ -18,23 +49,13 @@ module Main
       return 2
     end
 
-    mem = {0 => 1, 1 => 1, 2 => 2}
+    dp = [0 * (n + 1)]
+    dp[1] = 1
+    dp[2] = 2
 
-    do_climb_stairs(n, 0, mem)
-  end
-
-  def do_climb_stairs(n, total, mem)
-    if n < 0
-      return 0
-    elsif n == 0
-      return 1
+    for i in 3..n
+        dp[i] = dp[i - 1] + dp[i - 2]
     end
-
-    if(mem.key?(n))
-      return mem[n]
-    else
-      total = do_climb_stairs(n - 1, total, mem) + do_climb_stairs(n - 2, total, mem)
-      mem[n] = total
-    end
-  end
+    dp[n]
+end
 end
