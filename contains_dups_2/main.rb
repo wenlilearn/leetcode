@@ -13,38 +13,27 @@ module Main
       return false
     end
 
-    value_vs_index = Hash.new([])
+    value_vs_index = Hash.new()
 
     nums.each_with_index do |num, idx|
+      value_vs_index[num] ||= Array.new()
       value_vs_index[num] << idx
     end
 
-    value_vs_index.each do |k, v|
-      if v.length <= 1
+    value_vs_index.each do |_key, v|
+      if v.length == 1
         next
       end
 
-      if v.length % 2 == 0
-        right = v.length / 2
-        left = right - 1
-        if v[right] - v[left] > k
-          next
-        end
-      else
-        mid = v.length / 2
-        if v[mid + 1] - v[mid - 1] > k
-          next
+      for i in 1...(v.length)
+        for j in 0...i
+          if (v[i] - v[j]).abs <= k
+            return true
+          end
         end
       end
-
-      diff = {}
-
-      v.each do |num|
-        
-      end
-
-
     end
 
+    return false
   end
 end
