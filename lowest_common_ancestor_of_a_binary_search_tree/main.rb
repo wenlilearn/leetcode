@@ -31,25 +31,12 @@ module Main
   # @param {TreeNode} q
   # @return {TreeNode}
   def lowest_common_ancestor(root, p, q)
-    if root == nil
-      return nil
-    elsif root == p || root == q
-      return root.val
-    end
-
-    left = lowest_common_ancestor(root.left, p, q)
-    right = lowest_common_ancestor(root.right, p, q)
-
-    if left && right
-      return root.val
+    if root.val > p.val && root.val > q.val
+      return lowest_common_ancestor(root.left, p, q)
+    elsif root.val < p.val && root.val < q.val
+      return lowest_common_ancestor(root.right, p, q)
     else
-      if left == nil && right != nil
-        return lowest_common_ancestor(root.right, p, q)
-      elsif left != nil && right == nil
-        return lowest_common_ancestor(root.left, p, q)
-      else
-        return nil
-      end
+      return root
     end
   end
 end
