@@ -12,23 +12,6 @@ module Main
   # @param {Integer[]} nums
   # @return {Integer}
   def missing_number(nums)
-  #   if nums.length == 1
-  #     if nums[0] == 0
-  #       return 1
-  #     else
-  #       return 0
-  #     end
-  #   end
-  #
-  #   return 0 if nums[0] != 0
-  #   (1...nums.length).each do |i|
-  #     if nums[i] - nums[i - 1] != 1
-  #       return nums[i] - 1
-  #     end
-  #   end
-  #   return nums[-1] + 1
-  # end
-
     min = nums.min
     max = nums.max
 
