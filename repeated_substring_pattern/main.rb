@@ -29,6 +29,24 @@ module Main
 # @param {String} s
 # @return {Boolean}
 def repeated_substring_pattern(s)
-    
-end  
+    if s.length == 1 || s.length == 0
+      return false
+    end
+
+    s_len = s.length
+    if s_len >= 5000
+      range = (s.length - 1).downto(1)
+    else
+      range = 1...s.length
+    end
+
+    for i in range
+      next if s_len % i != 0
+
+      if s.chars.each_slice(i).map(&:join).uniq.length == 1
+        return true
+      end
+    end
+    return false
+end
 end
