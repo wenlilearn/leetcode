@@ -14,12 +14,14 @@ Only three moves are needed (remember each move increments two elements):
 
 [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
 
+Solution:
+Increasing all number by 1 means decreasing only 1 number by 1, the minimum is the min of the original array.
 =end
 
 module Main
 # @param {Integer[]} nums
 # @return {Integer}
 def min_moves(nums)
-    
-end  
+    (nums.inject(:+)) - (nums.min * nums.length)
+end
 end
